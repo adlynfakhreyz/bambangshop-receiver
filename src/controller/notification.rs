@@ -12,3 +12,11 @@ pub fn subscribe(product_type: &str) -> Result<Json<SubscriberRequest>> {
         Err(e) => Err(e)
     };
 }
+
+#[get("/unsubscribe/<product_type>")]
+pub fn unsubscribe(product_type: &str) -> Result<Json<SubscriberRequest>> {
+    return match NotificationService::unsubscribe(product_type) {
+        Ok(s) => Ok(Json::from(s)),
+        Err(e) => Err(e)
+    };
+}
