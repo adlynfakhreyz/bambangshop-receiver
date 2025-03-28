@@ -68,16 +68,16 @@ You can install Postman via this website: https://www.postman.com/downloads/
     -   [v] Commit: `Implement list_all_as_string function in Notification repository.`
     -   [v] Write answers of your learning module's "Reflection Subscriber-1" questions in this README.
 -   **STAGE 3: Implement services and controllers**
-    -   [ ] Commit: `Create Notification service struct skeleton.`
-    -   [ ] Commit: `Implement subscribe function in Notification service.`
-    -   [ ] Commit: `Implement subscribe function in Notification controller.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification service.`
-    -   [ ] Commit: `Implement unsubscribe function in Notification controller.`
-    -   [ ] Commit: `Implement receive_notification function in Notification service.`
-    -   [ ] Commit: `Implement receive function in Notification controller.`
-    -   [ ] Commit: `Implement list_messages function in Notification service.`
-    -   [ ] Commit: `Implement list function in Notification controller.`
-    -   [ ] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
+    -   [v] Commit: `Create Notification service struct skeleton.`
+    -   [v] Commit: `Implement subscribe function in Notification service.`
+    -   [v] Commit: `Implement subscribe function in Notification controller.`
+    -   [v] Commit: `Implement unsubscribe function in Notification service.`
+    -   [v] Commit: `Implement unsubscribe function in Notification controller.`
+    -   [v] Commit: `Implement receive_notification function in Notification service.`
+    -   [v] Commit: `Implement receive function in Notification controller.`
+    -   [v] Commit: `Implement list_messages function in Notification service.`
+    -   [v] Commit: `Implement list function in Notification controller.`
+    -   [v] Write answers of your learning module's "Reflection Subscriber-2" questions in this README.
 
 ## Your Reflections
 This is the place for you to write reflections:
@@ -91,3 +91,9 @@ This is the place for you to write reflections:
 2. Rust memiliki pendekatan yang sangat berbeda dengan Java dalam hal variabel static. Di Rust, variabel statisc secara default bersifat immutable untuk menjamin keamanan dalam lingkungan multithreading. Ini merupakan bagian dari filosofi keamanan memori dan konkurensi yang diusung Rust. Berbeda dengan Java yang memungkinkan kita memodifikasi variabel static melalui fungsi static, Rust membatasi kemampuan ini untuk mencegah race condition dan masalah konkurensi lainnya. Penggunaan library `lazy_static` memberikan kita cara untuk mendefinisikan variabel static yang dapat dimodifikasi (mutable) dengan aman, sambil tetap mempertahankan pola Singleton—memastikan hanya ada satu instance dari variabel tersebut selama aplikasi berjalan. `lazy_static` juga memungkinkan inisialisasi yang ditunda (lazy) sehingga variabel hanya dibuat saat pertama kali diakses, menghemat sumber daya sistem.
 
 #### Reflection Subscriber-2
+
+1. Sudaah, File ini berfungsi sebagai pusat konfigurasi aplikasi yang berisi definisi penting seperti REQWEST_CLIENT untuk HTTP request dan APP_CONFIG untuk pengaturan aplikasi dengan pola Singleton. Di dalamnya juga terdapat sistem penanganan error terpusat dengan ErrorResponse dan fungsi compose_error_response, serta penggunaan library seperti lazy_static, dotenv, dan getset. Eksplorasi ini membantu saya memahami bagaimana aplikasi mengelola konfigurasi dan penanganan error secara terstruktur.
+
+2. Design pattern Observer sangat mempermudah penambahan subscriber baru. Ini karena pola Observer yang diimplementasikan mematuhi prinsip Open-Closed, di mana sistem terbuka untuk ekstensi tanpa perlu memodifikasi kode yang sudah ada. Ketika kita ingin menambahkan subscriber baru, cukup dengan menjalankan instance baru dan mendaftarkannya ke sistem. Mengenai penggunaan lebih dari satu instance Main app, hal ini tetap bisa dilakukan dengan mudah - kita hanya perlu mendaftarkan subscriber ke masing-masing aplikasi Main dengan cara mengirimkan request API ke endpoint yang sesuai. Fleksibilitas ini menunjukkan keunggulan dari penerapan pola Observer.
+
+3. Dengan Postman, saya bisa menguji endpoint aplikasi secara langsung dan melihat respons yang diberikan. Fitur collection memungkinkan saya untuk mengorganisir dan menyimpan berbagai request yang sering digunakan, sehingga tidak perlu membuat ulang request yang sama berkali-kali. Ditambah lagi, kemampuan Postman untuk bekerja dengan data aktual aplikasi, memungkinkan saya untuk memverifikasi bahwa aplikasi merespons dengan benar untuk berbagai skenario input.
